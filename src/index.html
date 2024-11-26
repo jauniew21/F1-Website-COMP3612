@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F1 Archive</title>
+        <link href="./output.css" rel="stylesheet">
+        <script src="./script.js"></script>
+        <!-- Loading animation API script -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
+    </head>
+    <body class="bg-blue-950 text-white">
+        <!-- Loading animation -->
+         <!-- Free Loading 49 by https://lottiefiles.com/free-animation/loading-49-car-types-svfruKtsBv?trigger_action=download -->
+        <div id="loading-overlay" class="hidden fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 w-full h-screen">
+            <div id="loading-animation" class="m-auto w-24 h-24"></div>
+        </div>
+
+        <main>
+            <!-- Header -->
+             <!-- All Waving Flags, Checkered Flag from https://www.allwavingflags.com/2018/04/checkered-flag.html -->
+            <div id="home-header" class="relative flex items-center justify-between px-6 py-4 bg-cover bg-center mb-6"
+                style="background-image: url('../images/checkered_flag.gif'); background-size: cover; background-repeat: no-repeat; height: 100px; width: 100%;">
+                <!-- Logo -->
+                 <!-- Found on Logos-World: https://logos-world.net/f1-logo/ -->
+                <img class="inline" src="../images/formula-1-logo-0.png" alt="Website Logo" width="75" height="75">
+                <!-- Heading -->
+                <h1 class="text-3xl font-bold text-center text-red-700">
+                    Formula 1 Dashboard
+                </h1>
+                <!-- Buttons -->
+                <div class="flex space-x-4">
+                    <button id="browse" class="hidden bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">
+                        Home
+                    </button>
+                    <button id="favourites" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full">
+                        Favourites
+                    </button>
+                </div>
+            </div>
+
+            <!-- Home Page -->
+            <article id="home" class="">
+                <aside class="">
+                    <div class="grid gap-5 place-items-center">
+                        <div class="flex items-center space-x-3">
+                            <label for="seasons">Season:</label>
+                            <select class="text-gray-700 border border-gray-600" name="seasons" id="seasons">
+                                <option value="" selected disabled>Select Season</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                            </select>
+                        </div>
+                        <h4 class="text-center">
+                            This is a Formula 1 Dashboard page where you can see and sort results, and keep track of your favourite circuits, drivers, and constructors.
+                            <br>
+                            (Note that you have to refresh to see the pink text indicating favourites)
+                            <br>
+                            This page uses JavaScript for it's frontend and functionality, and Tailwind CSS for styling.
+                            <br>
+                            Done by Jaunie Williams, here's the GitHub Repo:
+                        </h4>
+                        <div 
+                            style="background-image: url('../images/checkered_flag.gif'); background-size: cover; background-repeat: no-repeat; height: 270px; width: 100%;"
+                            class="flex justify-center mt-auto">
+                            <!-- Found on GIPHY by Formula 1 https://giphy.com/gifs/f1-ferrari-leclerc-charles-M9BLGQ8f2MvWVQZtTR -->
+                            <img src="../images/okay-charles.gif" alt="Charles Lleric walking">
+                        </div>
+                    </div>
+                </aside>
+            </article>
+
+            <!-- Races View -->
+            <article id="browse" class="flex">
+                <!-- list of races to browse -->
+                <section id="races-list" class=""></section>
+                <!-- contains results and qualifying information -->
+                <section id="sect-container" class="flex-auto">
+                    <h1 id="dual-header" class="text-2xl font-bold text-center"></h1>
+                    <div id="dual-info" class="flex"></div>
+                </section>
+            </article>
+        </main>
+
+        <!-- Modals -->
+        <!-- class help for modals from tailwind documentation: https://flowbite.com/docs/components/modal/ -->
+        <!-- Default Modal -->
+        <aside id="modal-default" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-full bg-black bg-opacity-50">
+            <div class="relative bg-blue-900 rounded-lg shadow-lg p-4 w-full max-w-3xl max-h-[85vh]">
+                <!-- Modal body -->
+                <div id="modal-content" class="max-h-[80vh]"></div>
+                <button id="close-modal" class="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded">Close</button>
+            </div>
+        </aside>
+
+        <!-- Favourites Modal -->  
+        <aside id="modal-fav" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-full bg-black bg-opacity-50">
+            <div class="max-h-[80vh] relative bg-blue-900 rounded-lg shadow-lg p-4 w-full h-full max-w-3xl">
+                <!-- Modal body -->
+                <h1 class="font-bold text-3xl text-center">Favourites!</h1>
+                <div id="fav-content" class="max-h-[80vh] grid grid-cols-3 gap-4">
+                    <!-- Drivers Section -->
+                    <div id="drivers-list" class="max-h-[70vh]">
+                        <h1 class="font-bold text-xl">Drivers</h1>
+                        <!-- Drivers Content -->
+                    </div>
+                    <!-- Constructors Section -->
+                    <div id="constructors-list" class="max-h-[70vh]">
+                        <h1 class="font-bold text-xl">Constructors</h1>
+                        <!-- Constructors Content -->
+                    </div>
+                    <!-- Circuits Section -->
+                    <div id="circuits-list" class="max-h-[70vh]">
+                        <h1 class="font-bold text-xl">Circuits</h1>
+                        <!-- Circuits Content -->
+                    </div>
+                </div>
+                <button id="close-fav" class="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded">Close</button>
+            </div>
+        </aside>
+
+    </body>
+</html>
