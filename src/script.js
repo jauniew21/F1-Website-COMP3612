@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // configure loading animation
-    const anim = lottie.loadAnimation({
-        container: document.querySelector("#loading-animation"),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'images/load.json'
-    });
+    // const anim = lottie.loadAnimation({
+    //     container: document.querySelector("#loading-animation"),
+    //     renderer: 'svg',
+    //     loop: true,
+    //     autoplay: true,
+    //     path: 'images/load.json'
+    // });
 
     // Select Season changes to DOM
     const selSeason = document.querySelector("#seasons")
