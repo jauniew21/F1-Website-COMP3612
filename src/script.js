@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: images/load.json
+        path: 'images/load.json'
     });
 
     // Select Season changes to DOM
